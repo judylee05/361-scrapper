@@ -3,44 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <title>CS361 Project</title>
-    <script src="wiki_scrapper.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>CS361 Project</h1>
 
-<div>
-    <p>
+<div class="d-flex justify-content-center"><h1>Summary Scrapper with Overall Connotation</h1></div>
+<p>
         Welcome to the Wikipedia Summary Scraper! Search for a term currently found in Wikipedia and return:
         <ul>
             <li>Summary of the article</li>
             <li>An overall positive or negative connotation, based on the summary</li>
         </ul>
-
-        All you need to do is enter a valid Wikipedia search term and click on the submit button
-    </p>
-</div>
-
-
-<form id="userForm">
-    <label>Wikipedia Link</label>
-    <input type='text' name='wikiLink' id='wikiLink'>
-
-    <input type='submit' class = 'button' id='userSubmit'>
-</form>
-<div id="wikiSummary", style="visibility: hidden">
-    <h2>Wikipedia Summary:</h2>
-        <p id="resultsHeader"></p>
-</div>
-<div id ="overallConnotation", style="visibility: hidden">
-    <h2>Overall Connotation:</h2>
-    <p id="resultsConnotation"></p>
-</div>
-<div>
-    <button type="button" id ="retryButton" style="visibility:hidden">Scrape Something Else!</button>
+</p>
+<p>All you need to do is enter a valid Wikipedia search term and click on the submit button!</p>
 </div>
 <br>
-<div>
-    <p>Curious about the process? Click here</p>
+
+<form id="userForm">
+    <label><b>Wikipedia Search Term:</b> </label>
+    <input type='text' name='wikiLink' id='wikiLink'>
+    <input type='submit' class = 'button' id='userSubmit'>
+</form>
+
+<div id="wikiSummary", style="visibility: hidden">
+    <h3>Wikipedia Summary:</h3>
+        <p id="resultsHeader"></p>
 </div>
+<br>
+<br>
+
+<div id ="overallConnotation", style="visibility: hidden">
+    <h3>Overall Connotation:</h3>
+    <p id="resultsConnotation"></p>
+</div>
+<br>
+
+<div class="d-flex justify-content-center">
+    <div id="saveDiv", style="visibility: hidden">
+        <button id="saveButton" onclick="downloadFunction()">Save As Text File</button>
+        <script>
+            // create a txt file containing data and allow user to download txt file after button is clicked
+            // reference: https://www.youtube.com/watch?v=pCdA3YXWRdM
+    
+            function downloadFunction(){
+                console.log("HELLO");
+                let blobTextSummary = document.getElementById('resultsHeader').innerText
+                let blobTextConnotation = document.getElementById('resultsConnotation').innerText
+                let blobTextLineBreak = "\r\n"
+    
+                let blobText = ["Scrapped Wikipedia Summary:", blobTextLineBreak, blobTextSummary, blobTextLineBreak, blobTextLineBreak, "Overall Connotation: ", blobTextConnotation]
+    
+                let blobOption = {type: "text/plain;charset=utf-8"}
+                let blob = new Blob(blobText, blobOption); // blobText must be an array! 
+                saveAs(blob, "results.txt");
+            }
+        </script>
+    </div>
+    <div>
+        <button type="button" id ="retryButton" style="visibility:hidden">Scrape Something Else!</button>
+    </div>
+</div>
+<br>
+
+<div class="d-flex justify-content-center">
+    <p id="addText"><i>Curious about the process? <b>Click here</b></i></p>
+</div>
+<div id = "addInfo" style="visibility: hidden">
+    <p>This website utilizes two APIs - the Wikipedia API and Kari's Microservice in order to get scrapped Wikipedia summary data and the overall sentiment, respectively. My microservice calls upon Kari's and sends the scrapped Wikipedia data over. Then, my microservice receives the overall connotation of the scrapped summary back from Kari's microserice.</p>
+</div>
+<script src="wiki_scrapper.js"></script>
+<script src="FileSaver.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>

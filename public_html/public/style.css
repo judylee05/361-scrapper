@@ -1,0 +1,74 @@
+h1, p, form{
+    text-align: center;
+}
+
+ul{
+    text-align: center;
+    font-style: italic;
+    list-style-position: inside;
+}
+
+div, h3 {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+button:focus{
+    outline: none;
+}
+
+.button {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: darkcyan; 
+    color: white;
+    margin-left: 12px;
+    outline: none;
+}
+
+#retryButton, #errorBackButton{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(185, 21, 76);
+    color: white;
+    margin-left: 12px;
+    outline: none;
+}
+
+#saveButton{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: darkslateblue;
+    color: white;
+    margin-left: 12px;
+    outline: none;
+}
+
+#resultsHeader{
+    border: 2px solid lightcoral;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-right: 30px;
+    padding-left: 30px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#resultsConnotation{
+    border: 2px solid lightcoral;
+    text-align: center;
+    font-size: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-right: 30px;
+    padding-left: 30px;
+    margin-left: 600px;
+    margin-right: 600px;
+}
