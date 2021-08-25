@@ -1,7 +1,7 @@
 # :thought_balloon: Wiki Summary Emotion API
 
 ## 📖 Overview
-Wiki Summary Emotion API sends users the Wikipedia sumamry data and overall connotation of a given search term
+Wiki Summary Emotion API sends users the Wikipedia summary data and overall connotation of a given search term
 - [X] Utilizes the Wikipedia API and Watson Tone Analyzer API
 - [X] Accepts POST Requests in *{"wiki":"search_term"}* format and returns information in JSON format
 - [X] Displays information using a web application
